@@ -140,6 +140,13 @@ class Student extends Person {
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
+  readyToGraduate() {
+    if (this.grade >= 70) {
+      return `${this.name} is ready to graduate 🎓`;
+    } else {
+      return `${this.name} has some work to do before graduation!`;
+    }
+  }
 }
 
 // Project Manager Class ============
@@ -205,4 +212,4 @@ console.log(lucy.PRAssignment("Python"));
 console.log(jonathon.standUp("WEBEUHELP"));
 console.log(jonathon.debugsCode(lucy, "Strict Mode HTML"));
 console.log(martin.addToGrade(lucy));
-console.log(jonathon.takeFromGrade(lucy));
+console.log(lucy.readyToGraduate());
