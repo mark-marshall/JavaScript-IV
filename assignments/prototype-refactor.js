@@ -184,3 +184,31 @@ class CharacterStats extends GameObject {
     return `{this.name} took damage.`;
   }
 }
+
+/* Humanoid Constructor ============
+
+function Humanoid(humanoidArgs) {
+    CharacterStats.call(this, humanoidArgs);
+    this.team = humanoidArgs.team;
+    this.weapons = humanoidArgs.weapons;
+    this.language = humanoidArgs.language;
+  }
+  
+  Humanoid.prototype = Object.create(CharacterStats.prototype);
+  
+  Humanoid.prototype.greet = function() {
+    return `${this.name} offers a greeting in ${this.language}`;
+  };
+*/
+
+class Humanoid extends CharacterStats {
+    constructor (humanoidArgs) {
+        super(humanoidArgs);
+        this.team = humanoidArgs.team;
+        this.weapons = humanoidArgs.weapons;
+        this.language = humanoidArgs.language;
+    }
+    greet() {
+        return `${this.name} offers a greeting in ${this.language}`;
+    }
+}
