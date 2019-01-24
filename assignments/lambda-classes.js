@@ -103,6 +103,20 @@ class Instructor extends Person {
   grade(student, subject) {
     return `${student.name} receives a perfect score on {subject}`;
   }
+  addToGrade(student) {
+    student.grade = student.grade + parseInt(Math.random() * 101);
+    if (student.grade > 100) {
+      student.grade = 100;
+    }
+    return `${student.name} now has a grade of ${student.grade}`;
+  }
+  takeFromGrade(student) {
+    student.grade = student.grade - parseInt(Math.random() * 101);
+    if (student.grade < 0) {
+      student.grade = 0;
+    }
+    return `${student.name} now has a grade of ${student.grade}`;
+  }
 }
 
 // Student Class ============
@@ -113,6 +127,7 @@ class Student extends Person {
     this.previousBackground = studentAttrs.previousBackground;
     this.className = studentAttrs.className;
     this.favSubjects = studentAttrs.favSubjects;
+    this.grade = studentAttrs.grade;
   }
   listSubjects() {
     for (let i = 0; i < favSubjects.length; i++) {
@@ -162,7 +177,8 @@ const lucy = new Student({
   gender: "female",
   previousBackground: "Quantity Surveyor",
   className: "EU1",
-  favSubjects: "Everything"
+  favSubjects: "Everything",
+  grade: 100
 });
 
 const jonathon = new ProjectManager({
@@ -188,3 +204,5 @@ console.log(lucy.sprintChallenge("React"));
 console.log(lucy.PRAssignment("Python"));
 console.log(jonathon.standUp("WEBEUHELP"));
 console.log(jonathon.debugsCode(lucy, "Strict Mode HTML"));
+console.log(martin.addToGrade(lucy));
+console.log(jonathon.takeFromGrade(lucy));
