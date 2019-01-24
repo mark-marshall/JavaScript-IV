@@ -135,7 +135,6 @@ const mage = new Humanoid({
 
 */
 
-
 /* Game Object Constructor ============
 
 function GameObject(gameObjectArgs) {
@@ -149,12 +148,39 @@ function GameObject(gameObjectArgs) {
 
   */
 
-  class GameObject {
-      constructor(gameObjectArgs) {
-        this.createdAt = gameObjectArgs.createdAt;
-        this.dimensions = gameObjectArgs.dimensions;
-      }
-      destroy() {
-          return `${this.name} was removed from the game.`;
-      }
+class GameObject {
+  constructor(gameObjectArgs) {
+    this.createdAt = gameObjectArgs.createdAt;
+    this.dimensions = gameObjectArgs.dimensions;
   }
+  destroy() {
+    return `${this.name} was removed from the game.`;
+  }
+}
+
+/* Character Stats Constructor ============
+
+function CharacterStats(characterStatsArgs) {
+    GameObject.call(this, characterStatsArgs);
+    this.healthPoints = characterStatsArgs.healthPoints;
+    this.name = characterStatsArgs.name;
+  }
+  
+  CharacterStats.prototype = Object.create(GameObject.prototype);
+  
+  CharacterStats.prototype.takeDamage = function() {
+    return `${this.name} took damage.`;
+  };
+
+  */
+
+class CharacterStats extends GameObject {
+  constructor(characterStatsArgs) {
+    super(characterStatsArgs);
+    this.healthPoints = characterStatsArgs.healthPoints;
+    this.name = characterStatsArgs.name;
+  }
+  takeDamage() {
+    return `{this.name} took damage.`;
+  }
+}
