@@ -84,7 +84,7 @@ class Person {
     this.gender = personAttrs.gender;
   }
   speak() {
-    console.log(`Hello my name is ${this.name}, I am from ${this.location}`);
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
   }
 }
 
@@ -101,7 +101,7 @@ class Instructor extends Person {
     return `Today we are learning about ${subject}`;
   }
   grade(student, subject) {
-    console.log(`${student.name} receives a perfect score on {subject}`);
+    return `${student.name} receives a perfect score on {subject}`;
   }
 }
 
@@ -120,10 +120,10 @@ class Student extends Person {
     }
   }
   PRAssignment(subject) {
-    console.log(`${this.name} has submitted a PR for ${subject}`);
+    return `${this.name} has submitted a PR for ${subject}`;
   }
   sprintChallenge(subject) {
-    console.log(`${this.name} has begun sprint challenge on ${subject}`);
+    return `${this.name} has begun sprint challenge on ${subject}`;
   }
 }
 
@@ -136,11 +136,55 @@ class ProjectManager extends Instructor {
     this.favInstructor = projectManagerAttrs.favInstructor;
   }
   standUp(slackChannel) {
-    console.log(
-      `${this.name} announces to ${this.slackChannel}, @channel standy times!`
-    );
+    return `${this.name} announces to ${slackChannel}, @channel standy times!`;
   }
   debugsCode(student, subject) {
-    console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
   }
 }
+
+// Test Objects ============
+
+const martin = new Instructor({
+  name: "Martin",
+  location: "London",
+  age: 46,
+  gender: "male",
+  favLanguage: "Vanilla CSS",
+  specialty: "Front-end",
+  catchPhrase: "Keep it vanilla"
+});
+
+const lucy = new Student({
+  name: "Lucy",
+  location: "Basingstoke",
+  age: 12,
+  gender: "female",
+  previousBackground: "Quantity Surveyor",
+  className: "EU1",
+  favSubjects: "Everything"
+});
+
+const jonathon = new ProjectManager({
+  name: "Jonathon",
+  location: "Dorchester",
+  age: 22,
+  gender: "male",
+  gradClassName: "EU00",
+  favInstructor: "Martin"
+});
+
+// Test Logs ============
+
+console.log(martin);
+console.log(lucy);
+console.log(jonathon);
+console.log(martin.speak());
+console.log(lucy.speak());
+console.log(jonathon.speak());
+console.log(martin.demo("CSS"));
+console.log(martin.demo("Responsive Design"));
+console.log(lucy.sprintChallenge("React"));
+console.log(lucy.PRAssignment("Python"));
+console.log(jonathon.standUp("WEBEUHELP"));
+console.log(jonathon.debugsCode(lucy, "Strict Mode HTML"));
