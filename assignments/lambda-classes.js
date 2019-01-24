@@ -130,8 +130,8 @@ class Student extends Person {
     this.grade = studentAttrs.grade;
   }
   listSubjects() {
-    for (let i = 0; i < favSubjects.length; i++) {
-      console.log(favSubjects[i]);
+    for (let i = 0; i < this.favSubjects.length; i++) {
+      console.log(this.favSubjects[i]);
     }
   }
   PRAssignment(subject) {
@@ -184,7 +184,7 @@ const lucy = new Student({
   gender: "female",
   previousBackground: "Quantity Surveyor",
   className: "EU1",
-  favSubjects: "Everything",
+  favSubjects: ["React", "Redux", "CSS"],
   grade: 100
 });
 
@@ -213,3 +213,4 @@ console.log(jonathon.standUp("WEBEUHELP"));
 console.log(jonathon.debugsCode(lucy, "Strict Mode HTML"));
 console.log(martin.addToGrade(lucy));
 console.log(lucy.readyToGraduate());
+console.log(lucy.listSubjects());
