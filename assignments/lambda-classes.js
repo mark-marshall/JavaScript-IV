@@ -74,7 +74,7 @@ const fred = new Instructor({
 
 // CODE here for your Lambda Classes
 
-// Person Constructor ============
+// Person Class ============
 
 class Person {
   constructor(personAttrs) {
@@ -88,7 +88,7 @@ class Person {
   }
 }
 
-// Instructor Constructor ============
+// Instructor Class ============
 
 class Instructor extends Person {
   constructor(instructorAttrs) {
@@ -105,38 +105,42 @@ class Instructor extends Person {
   }
 }
 
-// Student Constructor ============
+// Student Class ============
 
-/* #### Student
-
-* Now we need some students!
-* Student uses the same attributes that have been set up by Person
-* Student has the following unique props:
-  * `previousBackground` i.e. what the Student used to do before Lambda School
-  * `className` i.e. CS132
-  * `favSubjects`. i.e. an array of the student's favorite subjects ['Html', 'CSS', 'JavaScript']
-* Student has the following methods:
-  * `listsSubjects` a method that logs out all of the student's favoriteSubjects one by one.
-  * `PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
-  * `sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`
-  */
-
-  class Student extends Person {
-      constructor(studentAttrs) {
-          super(studentAttrs);
-          this.previousBackground = studentAttrs.previousBackground;
-          this.className = studentAttrs.className;
-          this.favSubjects = studentAttrs.favSubjects;
-      }
-      listSubjects(){
-          for (let i=0; i<favSubjects.length; i++){
-              console.log(favSubjects[i]);
-          }
-      }
-      PRAssignment(subject) {
-          console.log(`${this.name} has submitted a PR for ${subject}`)
-      }
-      sprintChallenge(subject) {
-          console.log(`${this.name} has begun sprint challenge on ${subject}`)
-      }
+class Student extends Person {
+  constructor(studentAttrs) {
+    super(studentAttrs);
+    this.previousBackground = studentAttrs.previousBackground;
+    this.className = studentAttrs.className;
+    this.favSubjects = studentAttrs.favSubjects;
   }
+  listSubjects() {
+    for (let i = 0; i < favSubjects.length; i++) {
+      console.log(favSubjects[i]);
+    }
+  }
+  PRAssignment(subject) {
+    console.log(`${this.name} has submitted a PR for ${subject}`);
+  }
+  sprintChallenge(subject) {
+    console.log(`${this.name} has begun sprint challenge on ${subject}`);
+  }
+}
+
+// Project Manager Class ============
+
+class ProjectManager extends Instructor {
+  constructor(projectManagerAttrs) {
+    super(projectManagerAttrs);
+    this.gradClassName = projectManagerAttrs.gradClassName;
+    this.favInstructor = projectManagerAttrs.favInstructor;
+  }
+  standUp(slackChannel) {
+    console.log(
+      `${this.name} announces to ${this.slackChannel}, @channel standy times!`
+    );
+  }
+  debugsCode(student, subject) {
+    console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
+  }
+}
